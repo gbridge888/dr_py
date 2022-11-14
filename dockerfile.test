@@ -1,0 +1,12 @@
+FROM python:3.8-slim-buster
+
+# 设置app文件夹是工作目录
+WORKDIR /root/sd/pywork/dr_py
+# 复制文件及目录过去
+COPY . /root/sd/pywork/dr_py
+
+# COPY requirements.txt requirements.txt
+RUN pip3 install -r requirements.txt
+
+ENTRYPOINT ["python3", "-m" , "flask", "run"] # 定参
+CMD ["--host=0.0.0.0", "--port=5705"] # 变参
